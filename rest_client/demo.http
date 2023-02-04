@@ -1,0 +1,21 @@
+GET http://localhost:8888/
+
+###
+GET http://localhost:8888/api/book
+
+###
+POST http://localhost:8888/api/book
+Content-Type: application/json
+
+{
+    "name": "testdata2"
+}
+
+###
+PATCH  http://localhost:8888/api/book/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "edited"
+}
