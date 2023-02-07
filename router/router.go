@@ -8,7 +8,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func NewRouter(bookController *controller.BookController) *httprouter.Router {
+func NewRouter(bookController *controller.BookController, userController *controller.UserController) *httprouter.Router {
 	router := httprouter.New()
 
 	router.GET("/", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
@@ -20,6 +20,12 @@ func NewRouter(bookController *controller.BookController) *httprouter.Router {
 	router.POST("/api/book", bookController.Create)
 	router.PATCH("/api/book/:bookId", bookController.Update)
 	router.DELETE("/api/book/:bookId", bookController.Delete)
+
+	router.GET("/api/users", userController.FindAll)
+	router.GET("/api/users/:userId", userController.FindById)
+	router.POST("/api/users", userController.Create)
+	router.PATCH("/api/users/:userId", userController.Update)
+	router.DELETE("/api/users/:userId", userController.Delete)
 
 	return router
 }

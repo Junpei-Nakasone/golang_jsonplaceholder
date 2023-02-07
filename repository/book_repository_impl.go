@@ -58,7 +58,7 @@ func (b *BookRepositoryImpl) FindById(ctx context.Context, bookId int) (model.Bo
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
 
-	SQL := "select id,name from book where id=$1"
+	SQL := "SELECT id, name FROM book WHERE id = $1"
 	result, errQuery := tx.QueryContext(ctx, SQL, bookId)
 	helper.PanicIfError(errQuery)
 	defer result.Close()

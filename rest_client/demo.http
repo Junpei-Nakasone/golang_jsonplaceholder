@@ -19,3 +19,38 @@ Content-Type: application/json
     "id": 1,
     "name": "edited"
 }
+
+
+###
+GET  http://localhost:8888/api/users/
+Content-Type: application/json
+
+###
+GET  http://localhost:8888/api/users/1
+Content-Type: application/json
+
+###
+POST  http://localhost:8888/api/users/
+Content-Type: application/json
+
+{
+    "name": "name1",
+    "username": "username1",
+    "email": "email1@email.com"
+}
+
+###
+PATCH  http://localhost:8888/api/users/1
+Content-Type: application/json
+
+{
+    "name": "name1edited",
+    "username": "username1edited",
+    "email": "emailedited1@email.com"
+}
+
+
+###
+DELETE    http://localhost:8888/api/users/1
+Content-Type: application/json
+

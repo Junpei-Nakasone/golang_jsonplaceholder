@@ -22,7 +22,13 @@ func main() {
 
 	bookController := controller.NewBookController(bookService)
 
-	routes := router.NewRouter(bookController)
+	userRepository := repository.NewUserRepository(db)
+
+	userService := service.NewUserServiceImpl(userRepository)
+
+	userController := controller.NewUserController(userService)
+
+	routes := router.NewRouter(bookController, userController)
 
 	server := http.Server{Addr: "localhost:8888", Handler: routes}
 
